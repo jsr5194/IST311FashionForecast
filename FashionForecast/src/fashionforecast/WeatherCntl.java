@@ -15,7 +15,7 @@ public class WeatherCntl {
     }
     
     public void getMainMenuCntl(){
-        new MainMenuCntl(theMainMenuCntl.getUserList());
+        theMainMenuCntl.getMainMenuUI();
     }
     
     public Precipitation getPrecipitationCntl(){

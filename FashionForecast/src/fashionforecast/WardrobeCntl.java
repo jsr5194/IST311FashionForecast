@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class WardrobeCntl {
     private MainMenuCntl theMainMenuCntl;
-    private GarmentCntl theGarmentCntl;
-    private OutfitCntl theOutfitCntl;
     private GarmentTableModel theGarmentTableModel;
     private OutfitTableModel theOutfitTableModel;
     private OutfitTableSimpleModel theOutfitTableSimpleModel;
@@ -22,8 +20,6 @@ public class WardrobeCntl {
         theGarmentTableModel = new GarmentTableModel(this);
         theOutfitTableModel = new OutfitTableModel(this, theGarmentTableModel);
         theOutfitTableSimpleModel = new OutfitTableSimpleModel(this, theGarmentTableModel);
-        theOutfitCntl = new OutfitCntl(this);
-        theGarmentCntl = new GarmentCntl(this);
         WardrobeUI theWardrobeUI = new WardrobeUI(this);
     }
     
@@ -48,19 +44,11 @@ public class WardrobeCntl {
     }
             
     public void goHome(){
-        MainMenuCntl newMainMenuCntl = new MainMenuCntl(theMainMenuCntl.getUserList());
+        theMainMenuCntl.getMainMenuUI();
     }
     
     public MainMenuCntl getMainMenuCntl(){
         return theMainMenuCntl;
-    }
-    
-    public GarmentCntl getGarmentCntl(){
-        return theGarmentCntl;
-    }
-    
-    public OutfitCntl getOutfitCntl(){
-        return theOutfitCntl;
     }
     
     public GarmentTableModel getTheGarmentTableModel(){

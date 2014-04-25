@@ -14,11 +14,21 @@ import java.util.ArrayList;
  */
 public class MainMenuCntl {
     UserList theUserList;
+    MainMenuUI theMainMenuUI;
     
     public MainMenuCntl(UserList passedUserList){
         theUserList = passedUserList;
         ArrayList<Garment> test;
-        MainMenuUI theMainMenuUI = new MainMenuUI(this);
+        getMainMenuUI();
+    }
+    
+    public void getMainMenuUI(){
+        if (theMainMenuUI == null){
+            theMainMenuUI = new MainMenuUI(this);
+        }
+        else{
+            theMainMenuUI.setVisible(true);
+        }
     }
 
     public UserList getUserList(){

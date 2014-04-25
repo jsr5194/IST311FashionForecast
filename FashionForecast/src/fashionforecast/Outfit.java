@@ -26,7 +26,7 @@ public class Outfit implements printable, exportable, Serializable{
         pants = passedPants;
         coat = passedCoat;
         shoes = passedShoes;
-        formality = passedFormality;
+        formality = passedFormality;                                   
     }
     
     public String getOutfitName(){

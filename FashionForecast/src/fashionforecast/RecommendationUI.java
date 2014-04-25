@@ -137,7 +137,6 @@ public class RecommendationUI extends JFrame{
                 pants = recommendation[1];
                 coat = recommendation[2];
                 shoes = recommendation[3];
-                
                 shirtLabel.setText(shirt.getGarmentName());
                 pantsLabel.setText(pants.getGarmentName());
                 coatLabel.setText(coat.getGarmentName());
@@ -152,12 +151,11 @@ public class RecommendationUI extends JFrame{
                     
                 weatherLabel.setText("Weather Report");
                 tempTextArea.setEditable(false);
-                tempTextArea.setText(theRecommendationCntl.getTemperature());
+                tempTextArea.setText("Temperature: " + theRecommendationCntl.getTemperature());
                 precipTextArea.setEditable(false);
-                precipTextArea.setText(theRecommendationCntl.getPrecipitation());
+                precipTextArea.setText("Precipitation: " + theRecommendationCntl.getPrecipitation());
             }
             else{
-                
                 
             }
         }

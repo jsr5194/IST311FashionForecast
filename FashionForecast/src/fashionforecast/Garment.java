@@ -20,7 +20,7 @@ public class Garment implements printable, exportable, Serializable{
     String garmentSize;
     String garmentDescription;
     String garmentType;
-    String garmentPrecipitation;
+    String garmentPrecipitation; //No Precipitation, rain, snow
     String garmentTemperature; //hot, warm, cold
     
     public Garment(String name, ImageIcon image, String size, boolean isDirty, String description, String type, String precipitation, String temperature){
