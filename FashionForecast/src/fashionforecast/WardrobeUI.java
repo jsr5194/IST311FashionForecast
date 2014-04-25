@@ -148,15 +148,20 @@ public class WardrobeUI extends JFrame{
             if (wardrobeTable.getModel() == theGarmentTableModel){
                 int row = wardrobeTable.rowAtPoint(event.getPoint());
                 int col = wardrobeTable.columnAtPoint(event.getPoint());
-                theWardrobeCntl.getWardrobeGarmentDetailUI(row);
-                setVisible(false);
+                if (row != -1){
+                    theWardrobeCntl.getWardrobeGarmentDetailUI(row);
+                    setVisible(false);
+                }
             }
             
             else if (wardrobeTable.getModel() == theOutfitTableSimpleModel){
                 int row = wardrobeTable.rowAtPoint(event.getPoint());
                 int col = wardrobeTable.columnAtPoint(event.getPoint());
-                theWardrobeCntl.getWardrobeOutfitDetailUI(row);
-                setVisible(false);
+                if (row != -1){
+                    System.out.println(row);
+                    theWardrobeCntl.getWardrobeOutfitDetailUI(row);
+                    setVisible(false);
+                }
             }
         }
     }

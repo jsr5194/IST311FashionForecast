@@ -43,6 +43,11 @@ public class AddNewOutfitUI extends JFrame{
     JButton saveButton;
     JButton cancelButton;
     
+    int selectedShirtIndex;
+    int selectedPantsIndex;
+    int selectedCoatIndex;
+    int selectedShoesIndex;
+    
     public AddNewOutfitUI(WardrobeCntl passedWardrobeCntl, OutfitTableModel passedOutfitTableModel){
         theWardrobeCntl = passedWardrobeCntl;
         theOutfitTableModel = passedOutfitTableModel;
@@ -68,12 +73,15 @@ public class AddNewOutfitUI extends JFrame{
         pantsLabel = new JLabel("Pants: ");
         String[] pantsDropdownValues = theWardrobeCntl.populatePantsDropdownValues();
         pantsDropdown = new JComboBox(pantsDropdownValues);
+        pantsDropdown.addActionListener(new PantsComboBoxListener());
         coatLabel = new JLabel("Coat: ");
         String[] coatDropdownValues = theWardrobeCntl.populateCoatDropdownValues();
         coatDropdown = new JComboBox(coatDropdownValues);
+        coatDropdown.addActionListener(new CoatComboBoxListener());
         shoesLabel = new JLabel("Shoes: ");
         String[] shoesDropdownValues = theWardrobeCntl.populateShoesDropdownValues();
         shoesDropdown = new JComboBox(shoesDropdownValues);
+        shoesDropdown.addActionListener(new ShoesComboBoxListener());
         
         cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new CancelButtonListener());
@@ -122,35 +130,40 @@ public class AddNewOutfitUI extends JFrame{
     public class SaveButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
-            
-            
-            //theOutfitTableModel.addOutfit(titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText());
+            int shirtIndex = theWardrobeCntl.getShirtGarmentIndices().get(selectedShirtIndex);
+            int pantsIndex = theWardrobeCntl.getPantsGarmentIndices().get(selectedPantsIndex);
+            int coatIndex = theWardrobeCntl.getCoatGarmentIndices().get(selectedCoatIndex);
+            int shoesIndex = theWardrobeCntl.getShoesGarmentIndices().get(selectedShoesIndex);
+            theOutfitTableModel.addOutfit(titleField.getText(), (Garment)theWardrobeCntl.getMainMenuCntl().getUserList().getGarmentTable(theWardrobeCntl.getMainMenuCntl().getUserList().getUserIndex()).get(shirtIndex), 
+                                                                (Garment)theWardrobeCntl.getMainMenuCntl().getUserList().getGarmentTable(theWardrobeCntl.getMainMenuCntl().getUserList().getUserIndex()).get(pantsIndex), 
+                                                                (Garment)theWardrobeCntl.getMainMenuCntl().getUserList().getGarmentTable(theWardrobeCntl.getMainMenuCntl().getUserList().getUserIndex()).get(coatIndex),
+                                                                (Garment)theWardrobeCntl.getMainMenuCntl().getUserList().getGarmentTable(theWardrobeCntl.getMainMenuCntl().getUserList().getUserIndex()).get(shoesIndex), 
+                                                                formalityField.getText());
             theWardrobeCntl.getWardrobeUI();
         }
     }
     
     public class ShirtComboBoxListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            int selectedIndex = shirtDropdown.getSelectedIndex();
-            System.out.println(selectedIndex);
+            selectedShirtIndex = shirtDropdown.getSelectedIndex();
         }
     }
     
     public class PantsComboBoxListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            int selectedIndex = pantsDropdown.getSelectedIndex();
+            selectedPantsIndex = pantsDropdown.getSelectedIndex();
         }
     }
     
     public class CoatComboBoxListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            int selectedIndex = coatDropdown.getSelectedIndex();
+            selectedCoatIndex = coatDropdown.getSelectedIndex();
         }
     }
     
     public class ShoesComboBoxListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            int selectedIndex = shoesDropdown.getSelectedIndex();
+            selectedShoesIndex = shoesDropdown.getSelectedIndex();
         }
     }
     

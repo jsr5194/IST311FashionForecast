@@ -25,12 +25,14 @@ public class RecommendationCntl {
     
     public Garment[] getRecommendation(){
         try{
-            Outfit recommendedOutfit = theMainMenuCntl.getUserList().getOutfitTable(userIndex).get(0);
             Garment[] recommendationReturn = new Garment[4];
-            recommendationReturn[0] = recommendedOutfit.getShirt();
-            recommendationReturn[1] = recommendedOutfit.getPants();
-            recommendationReturn[2] = recommendedOutfit.getCoat();
-            recommendationReturn[3] = recommendedOutfit.getShoes();
+            String temp = getTemperature();
+            String precip = getPrecipitation();
+            
+            recommendationReturn[0] = theMainMenuCntl.getUserList().getOutfitTable(userIndex).get(0).getShirt();
+            recommendationReturn[1] = theMainMenuCntl.getUserList().getOutfitTable(userIndex).get(0).getPants();
+            recommendationReturn[2] = theMainMenuCntl.getUserList().getOutfitTable(userIndex).get(0).getCoat();
+            recommendationReturn[3] = theMainMenuCntl.getUserList().getOutfitTable(userIndex).get(0).getShoes();
 
             return recommendationReturn;
         }
@@ -38,5 +40,27 @@ public class RecommendationCntl {
             System.out.println(ex.getMessage());
             return null;
         }
+    }
+    
+    public String getTemperature(){
+        String returnTemp;
+        int temperature = 70;
+        if (temperature < 65){
+            returnTemp = "cold";
+        }
+        
+        else if (temperature >= 65 && temperature < 80){
+            returnTemp = "warm";
+        }
+        
+        else{
+            returnTemp = "hot";
+        }
+        return returnTemp;
+    }
+    
+    public String getPrecipitation(){
+        String precipitation = "none";
+        return precipitation;
     }
 }

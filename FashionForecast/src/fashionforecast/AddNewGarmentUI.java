@@ -29,6 +29,7 @@ public class AddNewGarmentUI extends JFrame{
     JPanel mainPanel;
     JPanel buttonsPanel;
     
+    
     ImageIcon garmentImage;
             
     JLabel titleLabel;
@@ -43,6 +44,10 @@ public class AddNewGarmentUI extends JFrame{
     JRadioButton garmentIsDirty;
     JRadioButton garmentIsClean;
     ButtonGroup garmentButtonGroup;
+    JLabel precipitationLabel;
+    JComboBox precipitationDropdown;
+    JLabel temperatureLabel;
+    JComboBox temperatureDropdown;
     JLabel descriptionLabel;
     JTextArea description;
     JButton saveButton;
@@ -81,6 +86,13 @@ public class AddNewGarmentUI extends JFrame{
         garmentButtonGroup.add(garmentIsDirty);
         garmentButtonGroup.add(garmentIsClean);
         
+        precipitationLabel = new JLabel("Precipitation: ");
+        String[] precipitationOptions = {"any", "none", "rain", "snow"};
+        precipitationDropdown = new JComboBox(precipitationOptions);
+        temperatureLabel = new JLabel("Temperature: ");
+        String[] temperatureOptions = {"any","hot", "warm", "cold"};
+        temperatureDropdown = new JComboBox(temperatureOptions);
+        
         descriptionLabel = new JLabel("Description: ");
         description = new JTextArea();
         
@@ -109,6 +121,10 @@ public class AddNewGarmentUI extends JFrame{
         garmentDirtyStatePanel.add(garmentIsClean);
         garmentDirtyStatePanel.add(garmentIsDirty);
         contentPanel.add(garmentDirtyStatePanel);
+        contentPanel.add(precipitationLabel);
+        contentPanel.add(precipitationDropdown);
+        contentPanel.add(temperatureLabel);
+        contentPanel.add(temperatureDropdown);
         contentPanel.add(descriptionLabel);
         contentPanel.add(description);
         buttonsPanel.add(cancelButton);
@@ -146,7 +162,7 @@ public class AddNewGarmentUI extends JFrame{
                 System.out.println("error in addnewgarmentui");
             }
             
-            theGarmentTableModel.addGarment(titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText());
+            theGarmentTableModel.addGarment(titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText(), (String)precipitationDropdown.getSelectedItem(), (String)temperatureDropdown.getSelectedItem());
             theWardrobeCntl.getWardrobeUI();
         }
     }

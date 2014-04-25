@@ -20,14 +20,18 @@ public class Garment implements printable, exportable, Serializable{
     String garmentSize;
     String garmentDescription;
     String garmentType;
+    String garmentPrecipitation;
+    String garmentTemperature; //hot, warm, cold
     
-    public Garment(String name, ImageIcon image, String size, boolean isDirty, String description, String type){
+    public Garment(String name, ImageIcon image, String size, boolean isDirty, String description, String type, String precipitation, String temperature){
         garmentName = name;
         garmentImage = image;
         garmentIsDirty = isDirty;
         garmentSize = size;
         garmentDescription = description;
         garmentType = type;
+        garmentPrecipitation = precipitation;
+        garmentTemperature = temperature;
     }
     
     public String getGarmentName(){
@@ -47,6 +51,12 @@ public class Garment implements printable, exportable, Serializable{
     }
     public String getGarmentType(){
         return garmentType;
+    }
+    public String getGarmentPrecipitation(){
+        return garmentPrecipitation;
+    }
+    public String getGarmentTemperature(){
+        return garmentTemperature;
     }
     
     //content written for submission

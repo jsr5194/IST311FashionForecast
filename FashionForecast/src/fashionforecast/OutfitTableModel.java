@@ -101,44 +101,13 @@ public class OutfitTableModel extends AbstractTableModel implements Serializable
     * */
     
     
-    public void buildTestOutfitTable(){
-        for(int i = 0; i < 10; i++){
-            String formality = "casual";
-            
-            try{
-                BufferedImage shirtBuffImg = ImageIO.read(new File("/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/shirt.jpg"));
-                ImageIcon shirtImg =new ImageIcon(shirtBuffImg);
-                Garment shirt = new Garment("myshirt", shirtImg, "Large", false, "stuff here", "shirt");
-                BufferedImage pantsBuffImg = ImageIO.read(new File("/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/pants.jpg"));
-                ImageIcon pantsImg =new ImageIcon(pantsBuffImg);
-                Garment pants = new Garment("mypants", pantsImg, "Large", false, "stuff here", "pants");
-                BufferedImage coatBuffImg = ImageIO.read(new File("/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/coat.jpg"));
-                ImageIcon coatImg =new ImageIcon(coatBuffImg);
-                Garment coat = new Garment("mycoat", coatImg, "Large", false, "stuff here", "coat");
-                BufferedImage shoesBuffImg = ImageIO.read(new File("/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/shoes.jpg"));
-                ImageIcon shoesImg =new ImageIcon(shoesBuffImg);
-                Garment shoes = new Garment("myshoes", shoesImg, "Large", false, "stuff here", "shoes");
-
-                Outfit newOutfit = new Outfit("test", shirt, pants, coat, shoes, formality);
-                //do not uncomment the below line unless writing the test outfits
-                //addOutfit(i,"test", shirt, pants, coat, shoes, formality);
-                outfitTableData.add(newOutfit);
-            
-            }
-            catch (IOException e){
-                
-            }
-                    
-        }
-    }
-    
     public void removeValueAt(int outfitId){
         outfitTableData.remove(outfitId); 
         this.theOutfitTable.writeOutfitTableData(outfitTableData);
         fireTableDataChanged();
     }
     
-    public void addOutfit(int passedId, String passedName, Garment passedShirt, Garment passedPants, Garment passedCoat, Garment passedShoes, String passedFormality){
+    public void addOutfit(String passedName, Garment passedShirt, Garment passedPants, Garment passedCoat, Garment passedShoes, String passedFormality){
         Outfit newOutfit = new Outfit(passedName, passedShirt, passedPants, passedCoat, passedShoes, passedFormality);
         outfitTableData.add(newOutfit);
         this.theOutfitTable.writeOutfitTableData(outfitTableData);

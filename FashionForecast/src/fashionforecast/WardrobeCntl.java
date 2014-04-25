@@ -87,6 +87,7 @@ public class WardrobeCntl {
             }
         }
         
+        
         String[] returnValue = new String[namesList.size()];
         for (int j = 0; j < namesList.size(); j++){
             returnValue[j] = namesList.get(j);
@@ -105,6 +106,7 @@ public class WardrobeCntl {
                 namesList.add(currentName);
             }
         }
+        
         
         String[] returnValue = new String[namesList.size()];
         for (int j = 0; j < namesList.size(); j++){

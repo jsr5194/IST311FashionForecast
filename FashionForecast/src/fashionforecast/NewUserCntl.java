@@ -49,19 +49,19 @@ public class NewUserCntl {
         try{
             BufferedImage shirtBuffImage = ImageIO.read(new File(pathRoot+"shirt.jpg"));
             ImageIcon shirtImage =new ImageIcon(shirtBuffImage);        
-            defaultShirt = new Garment("shirt", shirtImage, "Large", false, "Test description", "Shirt");
+            defaultShirt = new Garment("shirt", shirtImage, "Large", false, "Test description", "Shirt", "any", "warm");
 
             BufferedImage pantsBuffImage = ImageIO.read(new File(pathRoot+"pants.jpg"));
             ImageIcon pantsImage =new ImageIcon(pantsBuffImage);        
-            defaultPants = new Garment("pants", pantsImage, "Large", false, "Test description", "Pants");
+            defaultPants = new Garment("pants", pantsImage, "Large", false, "Test description", "Pants", "any", "cold");
 
             BufferedImage coatBuffImage = ImageIO.read(new File(pathRoot+"coat.jpg"));
             ImageIcon coatImage =new ImageIcon(coatBuffImage);        
-            defaultCoat = new Garment("coat", coatImage, "Large", false, "Test description", "Coat");
+            defaultCoat = new Garment("coat", coatImage, "Large", false, "Test description", "Coat", "any", "cold");
 
             BufferedImage shoesBuffImage = ImageIO.read(new File(pathRoot+"shoes.jpg"));
             ImageIcon shoesImage =new ImageIcon(shoesBuffImage);        
-            defaultShoes = new Garment("shoes", shoesImage, "Large", false, "Test description", "Shoes");
+            defaultShoes = new Garment("shoes", shoesImage, "Large", false, "Test description", "Shoes", "any", "any");
             
         }
         catch (IOException ex){

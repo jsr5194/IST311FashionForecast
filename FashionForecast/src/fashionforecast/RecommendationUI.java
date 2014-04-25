@@ -150,47 +150,11 @@ public class RecommendationUI extends JFrame{
                 shoesImageLabel.setIcon(shoes.getGarmentImage());
                 
                     
-                /*
-                try{   
-                    BufferedImage buffShirtImage = ImageIO.read(new File(recommendation[0]));
-                    shirtImage =new ImageIcon(buffShirtImage);
-                    shirtImageLabel.setIcon(shirtImage);
-                }
-                catch (IOException ex){
-                    setGenericImage("shirt");
-                }
-                        
-                try{ 
-                    BufferedImage buffPantsImage = ImageIO.read(new File(recommendation[1]));
-                    pantsImage =new ImageIcon(buffPantsImage);
-                    pantsImageLabel.setIcon(pantsImage);
-                }
-                catch (IOException ex){
-                    setGenericImage("pants");
-                }
-                try{ 
-                    BufferedImage buffCoatImage = ImageIO.read(new File(recommendation[2]));
-                    coatImage =new ImageIcon(buffCoatImage);
-                    coatImageLabel.setIcon(coatImage);
-                }
-                catch (IOException ex){
-                    setGenericImage("coat");
-                }
-                try{ 
-                    BufferedImage buffShoesImage = ImageIO.read(new File(recommendation[3]));
-                    shoesImage =new ImageIcon(buffShoesImage);
-                    shoesImageLabel.setIcon(shoesImage);
-                }
-                catch (IOException ex){
-                    setGenericImage("shoes");
-                }
-                        */
-
                 weatherLabel.setText("Weather Report");
                 tempTextArea.setEditable(false);
-                tempTextArea.setText("\t70");
+                tempTextArea.setText(theRecommendationCntl.getTemperature());
                 precipTextArea.setEditable(false);
-                precipTextArea.setText("\tRain");
+                precipTextArea.setText(theRecommendationCntl.getPrecipitation());
             }
             else{
                 
@@ -216,39 +180,6 @@ public class RecommendationUI extends JFrame{
             setVisible(false);
             theRecommendationCntl.getMainMenuCntl();
         }
-    }
-    
-    public void setGenericImage(String garmentType){
-        String pathBase = "/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/";
-        String garmentPath = pathBase+garmentType;
-        try{
-            switch (garmentType){
-                case "shirt":
-                    BufferedImage buffShirtImage = ImageIO.read(new File(garmentPath));
-                    shirtImage =new ImageIcon(buffShirtImage);
-                    shirtImageLabel.setIcon(shirtImage);
-                    break;
-                case "pants":
-                    BufferedImage buffPantsImage = ImageIO.read(new File(garmentPath));
-                    pantsImage =new ImageIcon(buffPantsImage);
-                    pantsImageLabel.setIcon(pantsImage);
-                    break;
-                case "coat":
-                    BufferedImage buffCoatImage = ImageIO.read(new File(garmentPath));
-                    coatImage =new ImageIcon(buffCoatImage);
-                    coatImageLabel.setIcon(coatImage);
-                    break;
-                case "shoes":
-                    BufferedImage buffShoesImage = ImageIO.read(new File(garmentPath));
-                    shoesImage =new ImageIcon(buffShoesImage);
-                    shoesImageLabel.setIcon(shoesImage);
-                    break;
-            }
-        }
-        catch (IOException ex){
-            System.out.println("Error: "+ex);
-        }
-        
     }
     
 }

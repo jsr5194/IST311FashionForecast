@@ -27,7 +27,6 @@ public class GarmentTableModel extends AbstractTableModel implements Serializabl
     public GarmentTableModel(WardrobeCntl passedWardrobeCntl){
         theWardrobeCntl = passedWardrobeCntl;
         theGarmentTable  = new GarmentTable(theWardrobeCntl);
-        //buildTestGarmentTable();
         this.garmentTableData = this.theGarmentTable.readGarmentTableData();
     }
 
@@ -65,6 +64,12 @@ public class GarmentTableModel extends AbstractTableModel implements Serializabl
             case 5:
                 objectToReturn = this.garmentTableData.get(row).getGarmentType();
                 break;
+            case 6:
+                objectToReturn = this.garmentTableData.get(row).getGarmentPrecipitation();
+                break;
+            case 7:
+                objectToReturn = this.garmentTableData.get(row).getGarmentTemperature();
+                break;
         }
         return objectToReturn;
         
@@ -99,19 +104,6 @@ public class GarmentTableModel extends AbstractTableModel implements Serializabl
     * */
     
     
-    public void buildTestGarmentTable(){
-        try{
-            BufferedImage testBuffImage = ImageIO.read(new File("U:\\j\\s\\jsr5194\\FashionForecast\\src\\fashionforecast\\shirt.jpg"));
-            ImageIcon testImage =new ImageIcon(testBuffImage);
-            for(int i = 0; i < 10; i++){
-                Garment newGarment = new Garment("test"+i, testImage, "Large", false, "Test description", "Shirt");
-                this.addGarment("test"+i, testImage, "Large", false, "Test description", "Shirt");
-            }
-        }
-        catch(IOException ex){
-            System.out.println("io error in garmenttablemodel");
-        }
-    }
     
     public void removeValueAt(int garmentId){
         garmentTableData.remove(garmentId); 
@@ -119,8 +111,8 @@ public class GarmentTableModel extends AbstractTableModel implements Serializabl
         fireTableDataChanged();
     }
     
-    public void addGarment(String passedName, ImageIcon passedImage, String passedSize, boolean passedIsDirty, String passedDescription, String passedType){
-        Garment newGarment = new Garment(passedName, passedImage, passedSize, passedIsDirty, passedDescription, passedType);
+    public void addGarment(String passedName, ImageIcon passedImage, String passedSize, boolean passedIsDirty, String passedDescription, String passedType, String passedPrecipitation, String passedTemperature){
+        Garment newGarment = new Garment(passedName, passedImage, passedSize, passedIsDirty, passedDescription, passedType, passedPrecipitation, passedTemperature);
         garmentTableData.add(newGarment);
         this.theGarmentTable.writeGarmentTableData(garmentTableData);
         fireTableDataChanged();
@@ -134,8 +126,8 @@ public class GarmentTableModel extends AbstractTableModel implements Serializabl
         return arrayToReturn;
     }
     
-    public void saveEditedGarment(int passedId, String passedName, ImageIcon passedImage, String passedSize, boolean passedIsDirty, String passedDescription, String passedType){
-        Garment newGarment = new Garment(passedName, passedImage, passedSize, passedIsDirty, passedDescription, passedType);
+    public void saveEditedGarment(int passedId, String passedName, ImageIcon passedImage, String passedSize, boolean passedIsDirty, String passedDescription, String passedType, String passedPrecipitation, String passedTemperature){
+        Garment newGarment = new Garment(passedName, passedImage, passedSize, passedIsDirty, passedDescription, passedType, passedPrecipitation, passedTemperature);
         garmentTableData.set(passedId, newGarment);
         this.theGarmentTable.writeGarmentTableData(garmentTableData);
         fireTableDataChanged();

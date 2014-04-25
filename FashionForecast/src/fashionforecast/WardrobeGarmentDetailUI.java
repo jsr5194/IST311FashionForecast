@@ -22,6 +22,8 @@ public class WardrobeGarmentDetailUI extends JFrame{
     JPanel typePanel;
     JPanel garmentSizePanel;
     JPanel garmentDirtyStatePanel;
+    JPanel precipitationPanel;
+    JPanel temperaturePanel;
     JPanel mainPanel;
     JPanel buttonsPanel;
     
@@ -35,6 +37,10 @@ public class WardrobeGarmentDetailUI extends JFrame{
     JTextField garmentSizeField;
     JRadioButton garmentIsDirty;
     JRadioButton garmentIsClean;
+    JLabel precipitationLabel;
+    JComboBox precipitationDropdown;
+    JLabel temperatureLabel;
+    JComboBox temperatureDropdown;
     ButtonGroup garmentButtonGroup;
     JTextArea description;
     JButton saveButton;
@@ -57,6 +63,8 @@ public class WardrobeGarmentDetailUI extends JFrame{
         typePanel = new JPanel();
         garmentSizePanel = new JPanel();
         garmentDirtyStatePanel = new JPanel();
+        precipitationPanel = new JPanel();
+        temperaturePanel = new JPanel();
         buttonsPanel = new JPanel();
         mainPanel = new JPanel();
         
@@ -86,6 +94,15 @@ public class WardrobeGarmentDetailUI extends JFrame{
         garmentButtonGroup.add(garmentIsDirty);
         garmentButtonGroup.add(garmentIsClean);
         
+        precipitationLabel = new JLabel("Precipitation: ");
+        String[] precipitationOptions = {"any","none", "rain", "snow"};
+        precipitationDropdown = new JComboBox(precipitationOptions);
+        precipitationDropdown.setSelectedItem((String)theGarmentTableModel.getValueAt(currentGarmentIndex, 6));
+        temperatureLabel = new JLabel("Temperature: ");
+        String[] temperatureOptions = {"any","hot", "warm", "cold"};
+        temperatureDropdown = new JComboBox(temperatureOptions);
+        temperatureDropdown.setSelectedItem((String)theGarmentTableModel.getValueAt(currentGarmentIndex, 7));
+        
         description = new JTextArea(theGarmentTableModel.getValueAt(currentGarmentIndex, 4).toString());
         
         cancelButton = new JButton("Cancel");
@@ -111,10 +128,16 @@ public class WardrobeGarmentDetailUI extends JFrame{
         garmentSizePanel.add(garmentSizeField);
         garmentDirtyStatePanel.add(garmentIsDirty);
         garmentDirtyStatePanel.add(garmentIsClean);
+        precipitationPanel.add(precipitationLabel);
+        precipitationPanel.add(precipitationDropdown);
+        temperaturePanel.add(temperatureLabel);
+        temperaturePanel.add(temperatureDropdown);
         attributesPanel.add(titlePanel);
         attributesPanel.add(typePanel);
         attributesPanel.add(garmentSizePanel);
         attributesPanel.add(garmentDirtyStatePanel);
+        attributesPanel.add(precipitationPanel);
+        attributesPanel.add(temperaturePanel);
         attributesPanel.add(description);
         contentPanel.add(garmentImageLabel);
         contentPanel.add(attributesPanel);
@@ -145,7 +168,7 @@ public class WardrobeGarmentDetailUI extends JFrame{
                 savedDirtyState = false;
             }
             
-            theGarmentTableModel.saveEditedGarment(currentGarmentIndex, titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText());
+            theGarmentTableModel.saveEditedGarment(currentGarmentIndex, titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText(), (String)precipitationDropdown.getSelectedItem(), (String)temperatureDropdown.getSelectedItem());
             theWardrobeCntl.getWardrobeUI();
         }
     }
