@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class MainMenuCntl {
     UserList theUserList;
     MainMenuUI theMainMenuUI;
+    WeatherCntl theWeatherCntl;
     
     public MainMenuCntl(UserList passedUserList){
         theUserList = passedUserList;
@@ -44,7 +45,11 @@ public class MainMenuCntl {
     }
     
     public void getWeatherCntl(){
-        WeatherCntl theWeatherCntl = new WeatherCntl(this);
+        theWeatherCntl = new WeatherCntl(this);
+    }
+    
+    public WeatherCntl returnWeatherCntl(){
+        return theWeatherCntl;
     }
     
     
