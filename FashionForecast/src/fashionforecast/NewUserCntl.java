@@ -15,9 +15,13 @@ import javax.swing.ImageIcon;
 public class NewUserCntl {
     LoginCntl theLoginCntl;
     Garment defaultShirt;
+    Garment defaultSweatshirt;
     Garment defaultPants;
+    Garment defaultShorts;
     Garment defaultCoat;
+    Garment defaultRaincoat;
     Garment defaultShoes;
+    Garment defaultBoots;
     
     public NewUserCntl(LoginCntl passedLoginCntl){
         theLoginCntl = passedLoginCntl;
@@ -38,19 +42,31 @@ public class NewUserCntl {
         setInitialGarments();
         ArrayList<Garment> firstGarmentTable = new ArrayList<Garment>();
         firstGarmentTable.add(defaultShirt);
+        firstGarmentTable.add(defaultSweatshirt);
         firstGarmentTable.add(defaultPants);
+        firstGarmentTable.add(defaultShorts);
         firstGarmentTable.add(defaultCoat);
+        firstGarmentTable.add(defaultRaincoat);
         firstGarmentTable.add(defaultShoes);
+        firstGarmentTable.add(defaultBoots);
         return firstGarmentTable;
     }
     private void setInitialGarments(){
-        String pathRoot = "/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/";
+        String pathRoot = "/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/InitialImages/";
         
         try{
             BufferedImage shirtBuffImage = ImageIO.read(new File(pathRoot+"shirt.jpg"));
             ImageIcon shirtImage =new ImageIcon(shirtBuffImage);        
             defaultShirt = new Garment("shirt", shirtImage, "Large", false, "Test description", "Shirt", "any", "warm");
+            
+            BufferedImage sweatshirtBuffImage = ImageIO.read(new File(pathRoot+"sweatshirt.jpg"));
+            ImageIcon sweatshirtImage =new ImageIcon(sweatshirtBuffImage);        
+            defaultSweatshirt = new Garment("sweatshirt", sweatshirtImage, "Large", false, "Test description", "Shirt", "any", "cold");
 
+            BufferedImage shortsBuffImage = ImageIO.read(new File(pathRoot+"shorts.jpg"));
+            ImageIcon shortsImage =new ImageIcon(shortsBuffImage);        
+            defaultShorts = new Garment("shorts", shortsImage, "Large", false, "Test description", "Pants", "any", "hot");
+            
             BufferedImage pantsBuffImage = ImageIO.read(new File(pathRoot+"pants.jpg"));
             ImageIcon pantsImage =new ImageIcon(pantsBuffImage);        
             defaultPants = new Garment("pants", pantsImage, "Large", false, "Test description", "Pants", "any", "cold");
@@ -58,14 +74,25 @@ public class NewUserCntl {
             BufferedImage coatBuffImage = ImageIO.read(new File(pathRoot+"coat.jpg"));
             ImageIcon coatImage =new ImageIcon(coatBuffImage);        
             defaultCoat = new Garment("coat", coatImage, "Large", false, "Test description", "Coat", "any", "cold");
+            
+            BufferedImage raincoatBuffImage = ImageIO.read(new File(pathRoot+"raincoat.jpg"));
+            ImageIcon raincoatImage =new ImageIcon(raincoatBuffImage);        
+            defaultRaincoat = new Garment("raincoat", raincoatImage, "Large", false, "Test description", "Coat", "rain", "any");
 
             BufferedImage shoesBuffImage = ImageIO.read(new File(pathRoot+"shoes.jpg"));
             ImageIcon shoesImage =new ImageIcon(shoesBuffImage);        
             defaultShoes = new Garment("shoes", shoesImage, "Large", false, "Test description", "Shoes", "any", "any");
             
+            BufferedImage bootsBuffImage = ImageIO.read(new File(pathRoot+"boots.jpg"));
+            ImageIcon bootsImage =new ImageIcon(bootsBuffImage);        
+            defaultBoots = new Garment("boots", bootsImage, "Large", false, "Test description", "Shoes", "any", "any");
+            
+            
+            
         }
         catch (IOException ex){
-            System.out.println("ioerror in user");
+            System.out.println("ioerror in newusercntl");
+            ex.printStackTrace();
             System.exit(0);
         }
     }
