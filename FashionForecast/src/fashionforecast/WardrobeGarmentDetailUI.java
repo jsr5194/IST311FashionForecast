@@ -94,14 +94,27 @@ public class WardrobeGarmentDetailUI extends JFrame{
         garmentButtonGroup.add(garmentIsDirty);
         garmentButtonGroup.add(garmentIsClean);
         
-        precipitationLabel = new JLabel("Precipitation: ");
-        String[] precipitationOptions = {"any","none", "rain", "snow"};
+        precipitationLabel = new JLabel("Made For Precipitation: ");
+        String[] precipitationOptions = {"Yes", "No"};
         precipitationDropdown = new JComboBox(precipitationOptions);
-        precipitationDropdown.setSelectedItem((String)theGarmentTableModel.getValueAt(currentGarmentIndex, 6));
-        temperatureLabel = new JLabel("Temperature: ");
-        String[] temperatureOptions = {"any","hot", "warm", "cold"};
+        boolean precipitationCheck = (boolean)theGarmentTableModel.getValueAt(currentGarmentIndex, 6);
+        if (precipitationCheck == true){
+            precipitationDropdown.setSelectedItem("Yes");
+        }
+        else{
+            precipitationDropdown.setSelectedItem("No");
+        }
+        
+        temperatureLabel = new JLabel("Suggested Temperature: ");
+        String[] temperatureOptions = {"Hot", "Cold"};
         temperatureDropdown = new JComboBox(temperatureOptions);
-        temperatureDropdown.setSelectedItem((String)theGarmentTableModel.getValueAt(currentGarmentIndex, 7));
+        boolean temperatureCheck = (boolean)theGarmentTableModel.getValueAt(currentGarmentIndex, 7);
+        if (temperatureCheck == true){
+            temperatureDropdown.setSelectedItem("Cold");
+        }
+        else{
+            temperatureDropdown.setSelectedItem("Hot");
+        }
         
         description = new JTextArea(theGarmentTableModel.getValueAt(currentGarmentIndex, 4).toString());
         
@@ -168,7 +181,23 @@ public class WardrobeGarmentDetailUI extends JFrame{
                 savedDirtyState = false;
             }
             
-            theGarmentTableModel.saveEditedGarment(currentGarmentIndex, titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText(), (String)precipitationDropdown.getSelectedItem(), (String)temperatureDropdown.getSelectedItem());
+            boolean precipitation;
+            if (precipitationDropdown.getSelectedItem() == "Yes"){
+                precipitation = true;
+            }
+            else{
+                precipitation = false;
+            }
+            
+            boolean temperature;
+            if (temperatureDropdown.getSelectedItem() == "Cold"){
+                temperature = true;
+            }
+            else{
+                temperature = false;
+            }
+            
+            theGarmentTableModel.saveEditedGarment(currentGarmentIndex, titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText(), precipitation, temperature);
             theWardrobeCntl.getWardrobeUI();
         }
     }

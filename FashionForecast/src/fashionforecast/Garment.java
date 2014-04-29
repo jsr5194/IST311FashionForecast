@@ -20,10 +20,10 @@ public class Garment implements printable, exportable, Serializable{
     String garmentSize;
     String garmentDescription;
     String garmentType;
-    String garmentPrecipitation; //No Precipitation, rain, snow
-    String garmentTemperature; //hot, warm, cold
+    boolean garmentPrecipitation; //true for precipitation, false for no precipitation
+    boolean garmentTemperature; //true for cold, false for hot
     
-    public Garment(String name, ImageIcon image, String size, boolean isDirty, String description, String type, String precipitation, String temperature){
+    public Garment(String name, ImageIcon image, String size, boolean isDirty, String description, String type, boolean precipitation, boolean temperature){
         garmentName = name;
         garmentImage = image;
         garmentIsDirty = isDirty;
@@ -52,10 +52,10 @@ public class Garment implements printable, exportable, Serializable{
     public String getGarmentType(){
         return garmentType;
     }
-    public String getGarmentPrecipitation(){
+    public boolean getGarmentPrecipitation(){
         return garmentPrecipitation;
     }
-    public String getGarmentTemperature(){
+    public boolean getGarmentTemperature(){
         return garmentTemperature;
     }
     

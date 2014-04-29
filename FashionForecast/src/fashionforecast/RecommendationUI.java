@@ -150,10 +150,29 @@ public class RecommendationUI extends JFrame{
                 
                     
                 weatherLabel.setText("Weather Report");
+                boolean tempValue = theRecommendationCntl.getCurrentTemp();
+                String tempDisplay;
+                if (tempValue == true){
+                    tempDisplay = "Cold";
+                }
+                else{
+                    tempDisplay = "Hot";
+                }
                 tempTextArea.setEditable(false);
-                tempTextArea.setText("Temperature: " + theRecommendationCntl.getTemperature());
+                tempTextArea.setText("Temperature: " + tempDisplay);
+                String precipDisplay;
+                boolean precipValue = theRecommendationCntl.getCurrentPrecip();
+                if (precipValue == true && tempValue == true){
+                    precipDisplay = "Snow";
+                }
+                else if (precipValue == true){
+                    precipDisplay = "Rain";
+                }
+                else{
+                    precipDisplay = "None";
+                }
                 precipTextArea.setEditable(false);
-                precipTextArea.setText("Precipitation: " + theRecommendationCntl.getPrecipitation());
+                precipTextArea.setText("Precipitation: " + precipDisplay);
             }
             else{
                 

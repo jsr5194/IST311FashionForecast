@@ -13,12 +13,14 @@ import java.util.ArrayList;
  * @author jared
  */
 public class MainMenuCntl {
+    LoginCntl theLoginCntl;
     UserList theUserList;
     MainMenuUI theMainMenuUI;
     WeatherCntl theWeatherCntl;
     
-    public MainMenuCntl(UserList passedUserList){
-        theUserList = passedUserList;
+    public MainMenuCntl(LoginCntl passedLoginCntl){
+        theLoginCntl = passedLoginCntl;
+        theUserList = theLoginCntl.getUserList();
         ArrayList<Garment> test;
         getMainMenuUI();
     }
@@ -44,11 +46,14 @@ public class MainMenuCntl {
         WardrobeCntl theWardrobeCntl = new WardrobeCntl(this);
     }
     
-    public void getWeatherCntl(){
-        theWeatherCntl = new WeatherCntl(this);
+    public void getWeatherCntl(boolean uiIsShown){
+        theWeatherCntl = new WeatherCntl(this, uiIsShown);
     }
     
     public WeatherCntl returnWeatherCntl(){
+        if (theWeatherCntl == null){
+            getWeatherCntl(false);
+        }
         return theWeatherCntl;
     }
     

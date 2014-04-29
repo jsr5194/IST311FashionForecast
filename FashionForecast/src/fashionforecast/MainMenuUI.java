@@ -59,7 +59,7 @@ public class MainMenuUI extends JFrame{
     public class WeatherButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
-            theMainMenuCntl.getWeatherCntl();
+            theMainMenuCntl.getWeatherCntl(true);
         }
     }
     

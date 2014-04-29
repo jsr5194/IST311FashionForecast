@@ -87,10 +87,10 @@ public class AddNewGarmentUI extends JFrame{
         garmentButtonGroup.add(garmentIsClean);
         
         precipitationLabel = new JLabel("Precipitation: ");
-        String[] precipitationOptions = {"any", "none", "rain", "snow"};
+        String[] precipitationOptions = {"Yes", "No"};
         precipitationDropdown = new JComboBox(precipitationOptions);
         temperatureLabel = new JLabel("Temperature: ");
-        String[] temperatureOptions = {"any","hot", "warm", "cold"};
+        String[] temperatureOptions = {"Hot", "Cold"};
         temperatureDropdown = new JComboBox(temperatureOptions);
         
         descriptionLabel = new JLabel("Description: ");
@@ -162,7 +162,23 @@ public class AddNewGarmentUI extends JFrame{
                 System.out.println("error in addnewgarmentui");
             }
             
-            theGarmentTableModel.addGarment(titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText(), (String)precipitationDropdown.getSelectedItem(), (String)temperatureDropdown.getSelectedItem());
+            boolean precipitation;
+            if (precipitationDropdown.getSelectedItem() == "Yes"){
+                precipitation = true;
+            }
+            else{
+                precipitation = false;
+            }
+            
+            boolean temperature;
+            if (temperatureDropdown.getSelectedItem() == "Cold"){
+                temperature = true;
+            }
+            else{
+                temperature = false;
+            } 
+            
+            theGarmentTableModel.addGarment(titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText(), precipitation, temperature);
             theWardrobeCntl.getWardrobeUI();
         }
     }

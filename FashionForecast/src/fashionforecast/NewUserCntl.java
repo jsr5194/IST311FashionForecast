@@ -20,6 +20,7 @@ public class NewUserCntl {
     Garment defaultShorts;
     Garment defaultCoat;
     Garment defaultRaincoat;
+    Garment defaultNocoat;
     Garment defaultShoes;
     Garment defaultBoots;
     
@@ -47,6 +48,7 @@ public class NewUserCntl {
         firstGarmentTable.add(defaultShorts);
         firstGarmentTable.add(defaultCoat);
         firstGarmentTable.add(defaultRaincoat);
+        firstGarmentTable.add(defaultNocoat);
         firstGarmentTable.add(defaultShoes);
         firstGarmentTable.add(defaultBoots);
         return firstGarmentTable;
@@ -57,35 +59,39 @@ public class NewUserCntl {
         try{
             BufferedImage shirtBuffImage = ImageIO.read(new File(pathRoot+"shirt.jpg"));
             ImageIcon shirtImage =new ImageIcon(shirtBuffImage);        
-            defaultShirt = new Garment("shirt", shirtImage, "Large", false, "Test description", "Shirt", "any", "warm");
+            defaultShirt = new Garment("shirt", shirtImage, "Large", false, "Test description", "Shirt", false, false);
             
             BufferedImage sweatshirtBuffImage = ImageIO.read(new File(pathRoot+"sweatshirt.jpg"));
             ImageIcon sweatshirtImage =new ImageIcon(sweatshirtBuffImage);        
-            defaultSweatshirt = new Garment("sweatshirt", sweatshirtImage, "Large", false, "Test description", "Shirt", "any", "cold");
+            defaultSweatshirt = new Garment("sweatshirt", sweatshirtImage, "Large", false, "Test description", "Shirt", false, true);
 
             BufferedImage shortsBuffImage = ImageIO.read(new File(pathRoot+"shorts.jpg"));
             ImageIcon shortsImage =new ImageIcon(shortsBuffImage);        
-            defaultShorts = new Garment("shorts", shortsImage, "Large", false, "Test description", "Pants", "any", "hot");
+            defaultShorts = new Garment("shorts", shortsImage, "Large", false, "Test description", "Pants", false, false);
             
             BufferedImage pantsBuffImage = ImageIO.read(new File(pathRoot+"pants.jpg"));
             ImageIcon pantsImage =new ImageIcon(pantsBuffImage);        
-            defaultPants = new Garment("pants", pantsImage, "Large", false, "Test description", "Pants", "any", "cold");
+            defaultPants = new Garment("pants", pantsImage, "Large", false, "Test description", "Pants", false, true);
 
             BufferedImage coatBuffImage = ImageIO.read(new File(pathRoot+"coat.jpg"));
             ImageIcon coatImage =new ImageIcon(coatBuffImage);        
-            defaultCoat = new Garment("coat", coatImage, "Large", false, "Test description", "Coat", "any", "cold");
+            defaultCoat = new Garment("coat", coatImage, "Large", false, "Test description", "Coat", false, true);
             
             BufferedImage raincoatBuffImage = ImageIO.read(new File(pathRoot+"raincoat.jpg"));
             ImageIcon raincoatImage =new ImageIcon(raincoatBuffImage);        
-            defaultRaincoat = new Garment("raincoat", raincoatImage, "Large", false, "Test description", "Coat", "rain", "any");
+            defaultRaincoat = new Garment("raincoat", raincoatImage, "Large", false, "Test description", "Coat", true, false);
+            
+            BufferedImage nocoatBuffImage = ImageIO.read(new File(pathRoot+"nocoat.jpg"));
+            ImageIcon nocoatImage =new ImageIcon(nocoatBuffImage);        
+            defaultNocoat = new Garment("nocoat", nocoatImage, "N/A", false, "N/A", "Coat", false, false);
 
             BufferedImage shoesBuffImage = ImageIO.read(new File(pathRoot+"shoes.jpg"));
             ImageIcon shoesImage =new ImageIcon(shoesBuffImage);        
-            defaultShoes = new Garment("shoes", shoesImage, "Large", false, "Test description", "Shoes", "any", "any");
+            defaultShoes = new Garment("shoes", shoesImage, "Large", false, "Test description", "Shoes", false, false);
             
             BufferedImage bootsBuffImage = ImageIO.read(new File(pathRoot+"boots.jpg"));
             ImageIcon bootsImage =new ImageIcon(bootsBuffImage);        
-            defaultBoots = new Garment("boots", bootsImage, "Large", false, "Test description", "Shoes", "any", "any");
+            defaultBoots = new Garment("boots", bootsImage, "Large", false, "Test description", "Shoes", true, true);
             
             
             

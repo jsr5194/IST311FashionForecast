@@ -41,7 +41,7 @@ public class LoginCntl {
     }
     
     public void getMainMenuCntl(){
-        MainMenuCntl theMainMenuCntl = new MainMenuCntl(getUserList());
+        MainMenuCntl theMainMenuCntl = new MainMenuCntl(this);
     }
     
     public void getNewUserCntl(){
