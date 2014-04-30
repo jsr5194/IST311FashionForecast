@@ -54,6 +54,7 @@ public class LoginUI extends JFrame{
                 setVisible(false);
             }
             else{
+                JOptionPane.showMessageDialog(null, "Authentication Failed. Try Again");
                 reset();
             }
         }

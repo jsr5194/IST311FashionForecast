@@ -128,8 +128,9 @@ public class RecommendationUI extends JFrame{
     }
     
     //method to display the recommendation on the screen
-    //FIXME: currently requires a zip code for state college area. needs to be expanded for final product
     public void showRecommendation(String zip){
+        try{
+            Integer.parseInt(zip);
             if (zip.length() == 5){ 
                 
                 recommendation = theRecommendationCntl.getRecommendation();
@@ -175,10 +176,29 @@ public class RecommendationUI extends JFrame{
                 precipTextArea.setText("Precipitation: " + precipDisplay);
             }
             else{
-                
+                JOptionPane.showMessageDialog(null, "Invalid entry. Please enter a 5 digit Zip Code");
+                clearRecommendation();
             }
         }
+        catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Invalid entry. Please enter a 5 digit Zip Code");
+            clearRecommendation();
+        }
+    }
     
+    public void clearRecommendation(){
+        shirtLabel.setText("");
+        pantsLabel.setText("");
+        coatLabel.setText("");
+        shoesLabel.setText("");
+        shirtImageLabel.setIcon(null);
+        pantsImageLabel.setIcon(null);
+        coatImageLabel.setIcon(null);
+        shoesImageLabel.setIcon(null);
+        weatherLabel.setText("");
+        tempTextArea.setText("");
+        precipTextArea.setText("");
+    }
     
     public class ZipSubmitButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){

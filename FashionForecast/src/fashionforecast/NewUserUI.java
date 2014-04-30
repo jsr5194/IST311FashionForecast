@@ -58,6 +58,7 @@ public class NewUserUI extends JFrame{
     public class AddUserButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             theNewUserCntl.addUser(usernameField.getText(), passwordField.getText());
+            JOptionPane.showMessageDialog(null, "New User Successfully Added");
             theNewUserCntl.getLoginCntl();
             setVisible(false);
         }

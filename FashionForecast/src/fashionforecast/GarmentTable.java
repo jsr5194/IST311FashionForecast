@@ -32,7 +32,6 @@ public class GarmentTable implements Serializable{
     
     public void writeGarmentTableData(ArrayList<Garment> passedGarmentData){
         this.garmentData = passedGarmentData;
-        System.out.println(theWardrobeCntl.getMainMenuCntl());
         int currentUserIndex = theWardrobeCntl.getMainMenuCntl().getUserList().getUserIndex();
         User currentUser = theWardrobeCntl.getMainMenuCntl().getUserList().getUser(currentUserIndex);
         currentUser.setGarmentTable(this.garmentData);

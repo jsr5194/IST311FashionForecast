@@ -158,7 +158,6 @@ public class WardrobeUI extends JFrame{
                 int row = wardrobeTable.rowAtPoint(event.getPoint());
                 int col = wardrobeTable.columnAtPoint(event.getPoint());
                 if (row != -1){
-                    System.out.println(row);
                     theWardrobeCntl.getWardrobeOutfitDetailUI(row);
                     setVisible(false);
                 }

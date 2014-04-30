@@ -63,6 +63,7 @@ public class WardrobeOutfitDetailUI extends JFrame{
     JLabel shoesIsDirtyLabel;
     
     JButton saveButton;
+    JButton deleteButton;
     JButton cancelButton;
     
     public WardrobeOutfitDetailUI(WardrobeCntl passedWardrobeCntl, OutfitTableModel passedOutfitTableModel, int passedOutfitIndex){
@@ -142,6 +143,8 @@ public class WardrobeOutfitDetailUI extends JFrame{
         
         cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new CancelButtonListener());
+        deleteButton = new JButton("Delete");
+        deleteButton.addActionListener(new DeleteButtonListener());
         saveButton = new JButton("Save");
         saveButton.addActionListener(new SaveButtonListener());
         
@@ -204,6 +207,7 @@ public class WardrobeOutfitDetailUI extends JFrame{
         contentPanel.add(shoesPanel);
         
         buttonsPanel.add(cancelButton);
+        buttonsPanel.add(deleteButton);
         buttonsPanel.add(saveButton);
         
         mainPanel.add(topPanel, mainLayout.NORTH);
@@ -221,6 +225,22 @@ public class WardrobeOutfitDetailUI extends JFrame{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
             theWardrobeCntl.getWardrobeUI();
+        }
+    }
+    
+    public class DeleteButtonListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            int deleteChoice = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this outfit?", "Delete Outfit", JOptionPane.YES_NO_OPTION);
+            if (deleteChoice == JOptionPane.YES_OPTION){
+                if (currentOutfitIndex != 0){
+                    setVisible(false);
+                    theOutfitTableModel.removeValueAt(currentOutfitIndex);
+                    theWardrobeCntl.getWardrobeUI();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "You cannot delete this outfit.");
+                }
+            }
         }
     }
     

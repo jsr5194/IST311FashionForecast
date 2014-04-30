@@ -48,7 +48,6 @@ public class RecommendationCntl {
             temp = theMainMenuCntl.returnWeatherCntl().getTemperature();
             precip = theMainMenuCntl.returnWeatherCntl().getPrecipitation();
             int length = theMainMenuCntl.getUserList().getGarmentTable(userIndex).size();
-            System.out.println("length; " + length);
             for (int i = 0; i<length; i++){
                 //shirt
                 if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Shirt")){
@@ -98,49 +97,37 @@ public class RecommendationCntl {
             
             if (shirtOptions.isEmpty()){
                 recommendationReturn[0] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(0);
-                System.out.println("shirt default recommended");
             }
             else{
                 int index = (int)(Math.random()*shirtOptions.size());
-                
-                System.out.println(index);
                 recommendationReturn[0] = shirtOptions.get(index);
             }
             if (pantsOptions.isEmpty()){
                 recommendationReturn[1] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(2);
-                System.out.println("pants default recommended");
             }
             else{
                 int index = (int)(Math.random()*pantsOptions.size());
-                
-                System.out.println(index);
                 recommendationReturn[1] = pantsOptions.get(index);
             }
             if (coatOptions.isEmpty()){
                 recommendationReturn[2] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(4);
-                System.out.println("coat default recommended");
             }
             else{
                 int index = (int)(Math.random()*coatOptions.size());
-                
-                System.out.println(index);
                 recommendationReturn[2] = coatOptions.get(index);
             }
             if (shoesOptions.isEmpty()){
                 recommendationReturn[3] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(7);
-                System.out.println("shoes default recommended");
             }
             else{
                 int index = (int)(Math.random()*shoesOptions.size());
-                
-                System.out.println(index);
                 recommendationReturn[3] = shoesOptions.get(index);
             }
                 
             return recommendationReturn;
         }
         catch (IndexOutOfBoundsException ex){
-            System.out.println(ex.getMessage());
+            System.out.println("Error in RecommendationCntl. Message: "+ex.getMessage());
             return null;
         }
     }

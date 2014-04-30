@@ -26,11 +26,11 @@ public class OutfitTable implements Serializable{
         int currentUserIndex = theWardrobeCntl.getMainMenuCntl().getUserList().getUserIndex();
         User currentUser = theWardrobeCntl.getMainMenuCntl().getUserList().getUser(currentUserIndex);
         this.outfitData = currentUser.getOutfitTable();
-        if (!(currentUser.getOutfitTable().equals(new ArrayList<Outfit>()))){
+        if (!(currentUser.getOutfitTable().isEmpty())){
             this.outfitData = currentUser.getOutfitTable();
         }
         else{
-            System.out.println("outfittable: test");
+            this.outfitData = new ArrayList<Outfit>();
         }
                 
         return this.outfitData;

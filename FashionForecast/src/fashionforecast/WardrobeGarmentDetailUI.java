@@ -181,9 +181,14 @@ public class WardrobeGarmentDetailUI extends JFrame{
         public void actionPerformed(ActionEvent e){
             int deleteChoice = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this garment?", "Delete Garment", JOptionPane.YES_NO_OPTION);
             if (deleteChoice == JOptionPane.YES_OPTION){
-                setVisible(false);
-                theGarmentTableModel.removeValueAt(currentGarmentIndex);
-                theWardrobeCntl.getWardrobeUI();
+                if (currentGarmentIndex != 0){
+                    setVisible(false);
+                    theGarmentTableModel.removeValueAt(currentGarmentIndex);
+                    theWardrobeCntl.getWardrobeUI();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "You cannot delete this outfit.");
+                }
             }
         }
     }

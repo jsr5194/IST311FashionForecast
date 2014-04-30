@@ -25,7 +25,7 @@ public class UserList implements Serializable{
         }
         catch(IOException ex){
             this.writeInitialListFile();
-            System.out.println("userlist ioerror");
+            System.out.println("Error in UserList.readUserList");
             ex.printStackTrace();
         }
         catch(ClassNotFoundException ex){
@@ -52,7 +52,7 @@ public class UserList implements Serializable{
             out.close();
         }
         catch (IOException ex){
-            System.out.println("userlist: ioerror");
+            System.out.println("Error in Userlist.writeUserList");
         }
     }
     
