@@ -6,6 +6,8 @@
 
 package fashionforecast;
 
+import java.util.Arrays;
+
 /**
  *
  * @author jared
@@ -42,10 +44,10 @@ public class LoginCntl {
         NewUserCntl theNewUserCntl = new NewUserCntl(this);
     }
     
-    public Boolean authenticate(String username, String password){
+    public Boolean authenticate(String username, char[] password){
         int userListSize = theUserList.getListOfUsersSize();
         for (int i = 0; i < userListSize; i++){
-            if (username.equals(theUserList.getUsername(i)) && password.equals(theUserList.getPassword(i))){
+            if (username.equals(theUserList.getUsername(i)) && Arrays.equals(password, theUserList.getPassword(i))){
                 valueToReturn = true;
                 userIndex = i;
                 theUserList.setUserIndex(userIndex);

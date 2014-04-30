@@ -56,7 +56,7 @@ public class UserList implements Serializable{
         }
     }
     
-    public void addUser(String newUsername, String newPassword, ArrayList<Garment> newGarmentTable, ArrayList<Outfit> newOutfitTable){
+    public void addUser(String newUsername, char[] newPassword, ArrayList<Garment> newGarmentTable, ArrayList<Outfit> newOutfitTable){
         FileInputStream fis = null;
         ObjectInputStream in = null;
         FileOutputStream fos = null;
@@ -101,7 +101,7 @@ public class UserList implements Serializable{
         return listOfUsers.get(i).getUserName();
     }
     
-    public String getPassword(int i){
+    public char[] getPassword(int i){
         return listOfUsers.get(i).getPassword();
     }
     

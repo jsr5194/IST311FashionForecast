@@ -15,7 +15,7 @@ public class NewUserUI extends JFrame{
     JLabel usernameLabel;
     JLabel passwordLabel;
     JTextField usernameField;
-    JTextField passwordField;
+    JPasswordField passwordField;
     JButton addUserButton;
     JButton cancelButton;
     
@@ -31,7 +31,7 @@ public class NewUserUI extends JFrame{
         usernameLabel = new JLabel("New Username: ");
         usernameField = new JTextField("", 20);
         passwordLabel = new JLabel("New Password: ");
-        passwordField = new JTextField("", 20);
+        passwordField = new JPasswordField("", 20);
         cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new CancelButtonListener());
         addUserButton = new JButton("Create User");
@@ -57,7 +57,7 @@ public class NewUserUI extends JFrame{
     
     public class AddUserButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            theNewUserCntl.addUser(usernameField.getText(), passwordField.getText());
+            theNewUserCntl.addUser(usernameField.getText(), passwordField.getPassword());
             JOptionPane.showMessageDialog(null, "New User Successfully Added");
             theNewUserCntl.getLoginCntl();
             setVisible(false);

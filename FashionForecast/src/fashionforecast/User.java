@@ -10,25 +10,16 @@ import javax.swing.ImageIcon;
 
 public class User implements Serializable{
     private String userName;
-    private String password;
+    private char[] password;
     private ArrayList<Garment> theGarmentTable;
     private ArrayList<Outfit> theOutfitTable;
     
-    public User(String theUserName, String thePassword, ArrayList<Garment> passedGarmentTable, ArrayList<Outfit> passedOutfitTable){
+    public User(String theUserName, char[] thePassword, ArrayList<Garment> passedGarmentTable, ArrayList<Outfit> passedOutfitTable){
         userName = theUserName;
         password = thePassword;
         theGarmentTable = passedGarmentTable;
         theOutfitTable = passedOutfitTable;
         
-    }
-    
-    
-    public void setUserName(String theUserName){
-        userName = theUserName;
-    }
-    
-    public void setPassword(String thePassword){
-        password = thePassword;
     }
     
     public void setGarmentTable(ArrayList<Garment> passedGarmentTable){
@@ -43,7 +34,8 @@ public class User implements Serializable{
         return userName;
     }
     
-    public String getPassword(){
+    public char[] getPassword(){
+        System.out.println(password);
         return password;
     }
     

@@ -33,7 +33,7 @@ public class NewUserCntl {
         theLoginCntl.getLoginUI();
     }
     
-    public void addUser(String username, String password){
+    public void addUser(String username, char[] password){
         ArrayList<Garment> newGarmentTable = setFirstGarmentTable();
         ArrayList<Outfit> newOutfitTable = setFirstOutfitTable();
         theLoginCntl.getUserList().addUser(username, password, newGarmentTable, newOutfitTable);

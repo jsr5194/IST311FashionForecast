@@ -15,7 +15,7 @@ public class LoginUI extends JFrame{
     JLabel usernameLabel;
     JTextField usernameField;
     JLabel passwordLabel;
-    JTextField passwordField;
+    JPasswordField passwordField;
     JButton submitButton;
     JButton newUserButton;
             
@@ -30,7 +30,7 @@ public class LoginUI extends JFrame{
         usernameLabel = new JLabel("Username: ");
         usernameField = new JTextField("", 20);
         passwordLabel = new JLabel("Password: ");
-        passwordField = new JTextField("", 20);
+        passwordField = new JPasswordField("", 20);
         submitButton = new JButton("Submit");
         submitButton.addActionListener(new SubmitButtonListener());
         newUserButton = new JButton("New User");
@@ -48,7 +48,7 @@ public class LoginUI extends JFrame{
     }
     public class SubmitButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            Boolean authValue = theLoginCntl.authenticate(usernameField.getText(), passwordField.getText());
+            Boolean authValue = theLoginCntl.authenticate(usernameField.getText(), passwordField.getPassword());
             if (authValue == true){
                 theLoginCntl.getMainMenuCntl();
                 setVisible(false);
