@@ -45,6 +45,7 @@ public class WardrobeGarmentDetailUI extends JFrame{
     JTextArea description;
     JButton saveButton;
     JButton cancelButton;
+    JButton deleteButton;
     
     public WardrobeGarmentDetailUI(WardrobeCntl passedWardrobeCntl, GarmentTableModel passedGarmentTableModel, int passedGarmentIndex){
         theWardrobeCntl = passedWardrobeCntl;
@@ -120,13 +121,15 @@ public class WardrobeGarmentDetailUI extends JFrame{
         
         cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new CancelButtonListener());
+        deleteButton = new JButton("Delete");
+        deleteButton.addActionListener(new DeleteButtonListener());
         saveButton = new JButton("Save");
         saveButton.addActionListener(new SaveButtonListener());
         
         BorderLayout mainLayout = new BorderLayout();
         GridLayout attributesLayout = new GridLayout(0, 1);
         GridLayout contentLayout = new GridLayout(0, 2);
-        GridLayout buttonsLayout = new GridLayout(0, 2);
+        GridLayout buttonsLayout = new GridLayout(0, 3);
         
         mainPanel.setLayout(mainLayout);
         attributesPanel.setLayout(attributesLayout);
@@ -155,6 +158,7 @@ public class WardrobeGarmentDetailUI extends JFrame{
         contentPanel.add(garmentImageLabel);
         contentPanel.add(attributesPanel);
         buttonsPanel.add(cancelButton);
+        buttonsPanel.add(deleteButton);
         buttonsPanel.add(saveButton);
         mainPanel.add(contentPanel, mainLayout.CENTER);
         mainPanel.add(buttonsPanel, mainLayout.SOUTH);
@@ -170,6 +174,17 @@ public class WardrobeGarmentDetailUI extends JFrame{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
             theWardrobeCntl.getWardrobeUI();
+        }
+    }
+    
+    public class DeleteButtonListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            int deleteChoice = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete this garment?", "Delete Garment", JOptionPane.YES_NO_OPTION);
+            if (deleteChoice == JOptionPane.YES_OPTION){
+                setVisible(false);
+                theGarmentTableModel.removeValueAt(currentGarmentIndex);
+                theWardrobeCntl.getWardrobeUI();
+            }
         }
     }
     

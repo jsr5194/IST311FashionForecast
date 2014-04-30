@@ -60,8 +60,8 @@ public class RecommendationUI extends JFrame{
         descriptionTextArea = new JTextArea();
         descriptionTextArea.setEditable(false);
         descriptionTextArea.setText("\n"
-                + "\t\tThis is a description of how to \n"
-                + "\t\tuse this function\n");
+                + "\t\tEnter your zip code to recieve \n"
+                + "\t\ta recommendation\n");
         zipPanel = new JPanel();
         recommendationPanel = new JPanel();
         garmentPanel = new JPanel();

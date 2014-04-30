@@ -35,11 +35,11 @@ public class AddNewGarmentUI extends JFrame{
     JLabel titleLabel;
     JTextField titleField;
     JLabel typeLabel;
-    JTextField typeField;
+    JComboBox typeDropdown;
     JLabel garmentImageLabel;
     JTextField garmentImageField;
     JLabel garmentSizeLabel;
-    JTextField garmentSizeField;
+    JComboBox sizeDropdown;
     JLabel garmentDirtyStateLabel;
     JRadioButton garmentIsDirty;
     JRadioButton garmentIsClean;
@@ -70,12 +70,14 @@ public class AddNewGarmentUI extends JFrame{
         
         titleLabel = new JLabel("Garment Title: ");
         titleField = new JTextField();
-        typeLabel = new JLabel("Garment Type (shirt, pants, coat, shoes): ");
-        typeField = new JTextField();
+        typeLabel = new JLabel("Garment Type: ");
+        String[] typeOptions = {"Shirt", "Pants", "Coat", "Shoes"};
+        typeDropdown = new JComboBox(typeOptions);
         garmentImageLabel = new JLabel("Garment Image path: ");
         garmentImageField = new JTextField();
         garmentSizeLabel = new JLabel("Garment Size: ");
-        garmentSizeField = new JTextField();
+        String[] sizeOptions = {"Small", "Medium", "Large", "X-Large"};
+        sizeDropdown = new JComboBox(sizeOptions);
         garmentDirtyStateLabel = new JLabel("Garment Dirty State: ");
         garmentButtonGroup = new ButtonGroup();
         garmentIsDirty = new JRadioButton();
@@ -86,10 +88,10 @@ public class AddNewGarmentUI extends JFrame{
         garmentButtonGroup.add(garmentIsDirty);
         garmentButtonGroup.add(garmentIsClean);
         
-        precipitationLabel = new JLabel("Precipitation: ");
+        precipitationLabel = new JLabel("Made For Precipitation:: ");
         String[] precipitationOptions = {"Yes", "No"};
         precipitationDropdown = new JComboBox(precipitationOptions);
-        temperatureLabel = new JLabel("Temperature: ");
+        temperatureLabel = new JLabel("Suggested Temperature: ");
         String[] temperatureOptions = {"Hot", "Cold"};
         temperatureDropdown = new JComboBox(temperatureOptions);
         
@@ -114,9 +116,9 @@ public class AddNewGarmentUI extends JFrame{
         contentPanel.add(garmentImageLabel);
         contentPanel.add(garmentImageField);
         contentPanel.add(typeLabel);
-        contentPanel.add(typeField);
+        contentPanel.add(typeDropdown);
         contentPanel.add(garmentSizeLabel);
-        contentPanel.add(garmentSizeField);
+        contentPanel.add(sizeDropdown);
         contentPanel.add(garmentDirtyStateLabel);
         garmentDirtyStatePanel.add(garmentIsClean);
         garmentDirtyStatePanel.add(garmentIsDirty);
@@ -148,7 +150,6 @@ public class AddNewGarmentUI extends JFrame{
     
     public class SaveButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            setVisible(false);
             boolean savedDirtyState = true;
             if (garmentIsClean.isSelected() == true){
                 savedDirtyState = false;
@@ -157,29 +158,32 @@ public class AddNewGarmentUI extends JFrame{
             try{
                 BufferedImage garmentBuffImage = ImageIO.read(new File(garmentImageField.getText()));
                 garmentImage =new ImageIcon(garmentBuffImage);        
-            }
+            
+            
+                boolean precipitation;
+                if (precipitationDropdown.getSelectedItem() == "Yes"){
+                    precipitation = true;
+                }
+                else{
+                    precipitation = false;
+                }
+
+                boolean temperature;
+                if (temperatureDropdown.getSelectedItem() == "Cold"){
+                    temperature = true;
+                }
+                else{
+                    temperature = false;
+                } 
+
+                theGarmentTableModel.addGarment(titleField.getText(), garmentImage, (String)sizeDropdown.getSelectedItem(), savedDirtyState, description.getText(), (String)typeDropdown.getSelectedItem(), precipitation, temperature);
+                theWardrobeCntl.getWardrobeUI();
+                setVisible(false);
+                }
             catch (IOException ex){
-                System.out.println("error in addnewgarmentui");
+                JOptionPane.showMessageDialog(null, "Error loading image. Please Try Again");
+                
             }
-            
-            boolean precipitation;
-            if (precipitationDropdown.getSelectedItem() == "Yes"){
-                precipitation = true;
-            }
-            else{
-                precipitation = false;
-            }
-            
-            boolean temperature;
-            if (temperatureDropdown.getSelectedItem() == "Cold"){
-                temperature = true;
-            }
-            else{
-                temperature = false;
-            } 
-            
-            theGarmentTableModel.addGarment(titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText(), precipitation, temperature);
-            theWardrobeCntl.getWardrobeUI();
         }
     }
     

@@ -45,6 +45,7 @@ public class OutfitTable implements Serializable{
         currentUser.setOutfitTable(this.outfitData);
         theWardrobeCntl.getMainMenuCntl().getUserList().updateUserList(currentUser);
         theWardrobeCntl.getMainMenuCntl().getUserList().writeUserList();
+        currentUser.setOutfitTable(readOutfitTableData());
     }
     
 }

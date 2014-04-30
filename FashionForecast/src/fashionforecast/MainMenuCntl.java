@@ -21,7 +21,6 @@ public class MainMenuCntl {
     public MainMenuCntl(LoginCntl passedLoginCntl){
         theLoginCntl = passedLoginCntl;
         theUserList = theLoginCntl.getUserList();
-        ArrayList<Garment> test;
         getMainMenuUI();
     }
     

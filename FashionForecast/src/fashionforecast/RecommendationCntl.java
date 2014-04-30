@@ -42,86 +42,99 @@ public class RecommendationCntl {
         try{
             Garment[] recommendationReturn = new Garment[4];
             ArrayList<Garment> shirtOptions = new ArrayList<Garment>();
+            ArrayList<Garment> pantsOptions = new ArrayList<Garment>();
+            ArrayList<Garment> coatOptions = new ArrayList<Garment>();
+            ArrayList<Garment> shoesOptions = new ArrayList<Garment>();
             temp = theMainMenuCntl.returnWeatherCntl().getTemperature();
             precip = theMainMenuCntl.returnWeatherCntl().getPrecipitation();
-            boolean shirtSentinal = true;
-            boolean pantsSentinal = true;
-            boolean coatSentinal = true;
-            boolean shoesSentinal = true;
             int length = theMainMenuCntl.getUserList().getGarmentTable(userIndex).size();
+            System.out.println("length; " + length);
             for (int i = 0; i<length; i++){
                 //shirt
-                if (shirtSentinal == true){
-                    if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Shirt")){
-                        System.out.println(theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentName());
-                       // if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentPrecipitation() == precip){
-                            if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentTemperature() == temp){
-                                //recommendationReturn[0] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i);
-                                shirtOptions.add(theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i));
-                                shirtSentinal = false;
-                            }
-                       // }
-                    }
+                if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Shirt")){
+                   // if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentPrecipitation() == precip){
+                        if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentTemperature() == temp){
+                            //recommendationReturn[0] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i);
+                            shirtOptions.add(theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i));
+                        }
+                   // }
                 }
+                
 
                 //pants
-                if (pantsSentinal == true){
-                    if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Pants")){
-                       // if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentPrecipitation() == precip){
-                            if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentTemperature() == temp){
-                                recommendationReturn[1] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i);
-                                pantsSentinal = false;
-                            }
-                       // }
-                    }
+                if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Pants")){
+                   // if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentPrecipitation() == precip){
+                        if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentTemperature() == temp){
+                            //recommendationReturn[1] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i);
+                            pantsOptions.add(theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i));
+                        }
+                   // }
                 }
+                
 
                 //coat
-                if (coatSentinal == true){
-                    if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Coat")){
-                        if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentPrecipitation() == precip){
-                            if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentTemperature() == temp){
-                                recommendationReturn[2] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i);
-                                coatSentinal = false;
-                            }
+                if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Coat")){
+                    if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentPrecipitation() == precip){
+                        if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentTemperature() == temp){
+                            //recommendationReturn[2] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i);
+                            coatOptions.add(theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i));
                         }
+                        
                     }
                 }
 
                 //shoes
-                if (shoesSentinal == true){
-                    if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Shoes")){
-                        if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentPrecipitation() == precip){
-                            if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentTemperature() == temp){
-                                recommendationReturn[3] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i);
-                                shoesSentinal = false;
-                            }
+                if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentType().equals("Shoes")){
+                    if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentPrecipitation() == precip){
+                        if (theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i).getGarmentTemperature() == temp){
+                            //recommendationReturn[3] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i);
+                            shoesOptions.add(theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(i));
                         }
                     }
                 }
+                
 
             }
             
-            if (shirtSentinal == true){
+            if (shirtOptions.isEmpty()){
                 recommendationReturn[0] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(0);
                 System.out.println("shirt default recommended");
             }
             else{
-                System.out.println(shirtOptions.size());
                 int index = (int)(Math.random()*shirtOptions.size());
+                
+                System.out.println(index);
                 recommendationReturn[0] = shirtOptions.get(index);
             }
-            if (pantsSentinal == true){
+            if (pantsOptions.isEmpty()){
                 recommendationReturn[1] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(2);
                 System.out.println("pants default recommended");
             }
-            if (coatSentinal == true){
+            else{
+                int index = (int)(Math.random()*pantsOptions.size());
+                
+                System.out.println(index);
+                recommendationReturn[1] = pantsOptions.get(index);
+            }
+            if (coatOptions.isEmpty()){
                 recommendationReturn[2] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(4);
                 System.out.println("coat default recommended");
             }
-            if (shoesSentinal == true){
+            else{
+                int index = (int)(Math.random()*coatOptions.size());
+                
+                System.out.println(index);
+                recommendationReturn[2] = coatOptions.get(index);
+            }
+            if (shoesOptions.isEmpty()){
                 recommendationReturn[3] = theMainMenuCntl.getUserList().getGarmentTable(userIndex).get(7);
                 System.out.println("shoes default recommended");
+            }
+            else{
+                int index = (int)(Math.random()*shoesOptions.size());
+                
+                System.out.println(index);
+                recommendationReturn[3] = shoesOptions.get(index);
             }
                 
             return recommendationReturn;
