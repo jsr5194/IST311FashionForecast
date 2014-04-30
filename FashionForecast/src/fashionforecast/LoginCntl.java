@@ -17,8 +17,8 @@ public class LoginCntl {
     private int userIndex;
     
     public LoginCntl(){
+        theUserList = new UserList();
         theLoginUI = new LoginUI(this);
-        getUserList();
     }
     
     public void getLoginUI(){
@@ -31,13 +31,7 @@ public class LoginCntl {
     }
     
     public UserList getUserList(){
-        if (theUserList == null){
-            theUserList = new UserList();
-            return theUserList;
-        }
-        else{
-            return theUserList;
-        }
+        return theUserList;
     }
     
     public void getMainMenuCntl(){
@@ -49,7 +43,6 @@ public class LoginCntl {
     }
     
     public Boolean authenticate(String username, String password){
-        UserList theUserList = new UserList();
         int userListSize = theUserList.getListOfUsersSize();
         for (int i = 0; i < userListSize; i++){
             if (username.equals(theUserList.getUsername(i)) && password.equals(theUserList.getPassword(i))){
