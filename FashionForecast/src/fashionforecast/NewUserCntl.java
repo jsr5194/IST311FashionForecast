@@ -54,7 +54,7 @@ public class NewUserCntl {
         return firstGarmentTable;
     }
     private void setInitialGarments(){
-        String pathRoot = "/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/InitialImages/";
+        String pathRoot = "src/fashionforecast/InitialImages/";
         
         try{
             BufferedImage shirtBuffImage = ImageIO.read(new File(pathRoot+"shirt.jpg"));
