@@ -123,7 +123,7 @@ public class AddNewOutfitUI extends JFrame{
     public class CancelButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
-            theWardrobeCntl.getWardrobeUI();
+            theWardrobeCntl.getWardrobeUI(true);
         }
     }
     
@@ -139,7 +139,7 @@ public class AddNewOutfitUI extends JFrame{
                                                                 (Garment)theWardrobeCntl.getMainMenuCntl().getUserList().getGarmentTable(theWardrobeCntl.getMainMenuCntl().getUserList().getUserIndex()).get(coatIndex),
                                                                 (Garment)theWardrobeCntl.getMainMenuCntl().getUserList().getGarmentTable(theWardrobeCntl.getMainMenuCntl().getUserList().getUserIndex()).get(shoesIndex), 
                                                                 formalityField.getText());
-            theWardrobeCntl.getWardrobeUI();
+            theWardrobeCntl.getWardrobeUI(true);
         }
     }
     

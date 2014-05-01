@@ -224,7 +224,7 @@ public class WardrobeOutfitDetailUI extends JFrame{
     public class CancelButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
-            theWardrobeCntl.getWardrobeUI();
+            theWardrobeCntl.getWardrobeUI(true);
         }
     }
     
@@ -235,7 +235,7 @@ public class WardrobeOutfitDetailUI extends JFrame{
                 if (currentOutfitIndex != 0){
                     setVisible(false);
                     theOutfitTableModel.removeValueAt(currentOutfitIndex);
-                    theWardrobeCntl.getWardrobeUI();
+                    theWardrobeCntl.getWardrobeUI(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "You cannot delete this outfit.");
@@ -250,7 +250,7 @@ public class WardrobeOutfitDetailUI extends JFrame{
             
             //enter save info
             theOutfitTableModel.saveEditedOutfit(currentOutfitIndex, titleField.getText(), shirt, pants, coat, shoes, formalityField.getText());
-            theWardrobeCntl.getWardrobeUI();
+            theWardrobeCntl.getWardrobeUI(true);
         }
     }
     

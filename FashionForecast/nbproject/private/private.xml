@@ -3,19 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/RecommendationUI.java</file>
             <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/WeatherCntl.java</file>
-            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/GarmentTable.java</file>
-            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/OutfitTable.java</file>
-            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/Garment.java</file>
-            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/RecommendationCntl.java</file>
+            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/ShareDetailUI.java</file>
+            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/MainMenuUI.java</file>
+            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/ShareCntl.java</file>
             <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/WardrobeGarmentDetailUI.java</file>
             <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/UserList.java</file>
             <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/User.java</file>
-            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/GarmentTableModel.java</file>
-            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/NewUserCntl.java</file>
+            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/WeatherUI.java</file>
             <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/MainMenuCntl.java</file>
+            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/ShareUI.java</file>
             <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/AddNewGarmentUI.java</file>
+            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/WardrobeOutfitDetailUI.java</file>
+            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/WardrobeCntl.java</file>
+            <file>file:/Users/unkn0wn/NetBeansProjects/FashionForecast/src/fashionforecast/AddNewOutfitUI.java</file>
         </group>
     </open-files>
 </project-private>

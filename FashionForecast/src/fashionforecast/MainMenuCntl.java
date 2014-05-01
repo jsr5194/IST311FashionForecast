@@ -17,6 +17,7 @@ public class MainMenuCntl {
     UserList theUserList;
     MainMenuUI theMainMenuUI;
     WeatherCntl theWeatherCntl;
+    WardrobeCntl theWardrobeCntl;
     
     public MainMenuCntl(LoginCntl passedLoginCntl){
         theLoginCntl = passedLoginCntl;
@@ -41,8 +42,15 @@ public class MainMenuCntl {
         RecommendationCntl theRecommendationCntl = new RecommendationCntl(this);
     }
     
-    public void getWardrobeCntl(){
-        WardrobeCntl theWardrobeCntl = new WardrobeCntl(this);
+    public void getWardrobeCntl(boolean uiIsShown){
+        theWardrobeCntl = new WardrobeCntl(this, uiIsShown);
+    }
+    
+    public WardrobeCntl returnWardrobeCntl(){
+        if (theWardrobeCntl == null){
+            getWardrobeCntl(false);
+        }
+        return theWardrobeCntl;
     }
     
     public void getWeatherCntl(boolean uiIsShown){
@@ -54,6 +62,10 @@ public class MainMenuCntl {
             getWeatherCntl(false);
         }
         return theWeatherCntl;
+    }
+    
+    public void getShareCntl(){
+        ShareCntl theShareCntl = new ShareCntl(this);
     }
     
     

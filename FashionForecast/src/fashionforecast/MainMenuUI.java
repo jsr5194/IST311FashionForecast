@@ -11,7 +11,7 @@ public class MainMenuUI extends JFrame{
     JButton recommendationButton;
     JButton wardrobeButton;
     JButton weatherButton;
-    JButton settingsButton;
+    JButton shareButton;
     
     public MainMenuUI(MainMenuCntl parentMainMenuCntl){
         theMainMenuCntl = parentMainMenuCntl;
@@ -30,13 +30,13 @@ public class MainMenuUI extends JFrame{
         wardrobeButton.addActionListener(new WardrobeButtonListener());
         weatherButton = new JButton("Weather");
         weatherButton.addActionListener(new WeatherButtonListener());
-        settingsButton = new JButton("Settings");
-       // settingsButton.addActionListener(new SettingsButtonListener());
+        shareButton = new JButton("Share");
+        shareButton.addActionListener(new ShareButtonListener());
         
         mainPanel.add(recommendationButton);
         mainPanel.add(wardrobeButton);
+        mainPanel.add(shareButton);
         mainPanel.add(weatherButton);
-        mainPanel.add(settingsButton);
         mainPanel.setLayout(theGridLayout);
         this.add(mainPanel);
         setVisible(true);
@@ -52,7 +52,7 @@ public class MainMenuUI extends JFrame{
     public class WardrobeButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
-            theMainMenuCntl.getWardrobeCntl();
+            theMainMenuCntl.getWardrobeCntl(true);
         }
     }
     
@@ -63,10 +63,10 @@ public class MainMenuUI extends JFrame{
         }
     }
     
-    public class SettingsButtonListener implements ActionListener{
+    public class ShareButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
-            //theMainMenuCntl.getSettingsCntl();
+            theMainMenuCntl.getShareCntl();
         }
     }
     

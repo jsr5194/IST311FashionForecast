@@ -9,7 +9,11 @@ public class WeatherUI extends JFrame{
     JPanel mainPanel;
     JPanel contentPanel;
     JPanel tempPanel;
+    JLabel tempImageLabel;
     JPanel precipPanel;
+    JLabel precipImageLabel;
+    ImageIcon tempImage;
+    ImageIcon precipImage;
     JLabel tempLabel;
     JTextArea tempArea;
     JLabel precipLabel;
@@ -27,7 +31,9 @@ public class WeatherUI extends JFrame{
         mainPanel = new JPanel();
         contentPanel = new JPanel();
         tempPanel = new JPanel();
+        tempImageLabel = new JLabel();
         precipPanel = new JPanel();
+        precipImageLabel = new JLabel();
         tempLabel = new JLabel("Current Temperature: ");
         tempArea = new JTextArea();
         precipLabel = new JLabel("Current Precipitation: ");
@@ -39,9 +45,11 @@ public class WeatherUI extends JFrame{
         String tempDisplay;
         if (tempValue == true){
             tempDisplay = "Cold";
+            tempImage = theWeatherCntl.getColdImage();
         }
         else{
             tempDisplay = "Hot";
+            tempImage = theWeatherCntl.getHotImage();
         }
         tempArea.setEditable(false);
         tempArea.setText(tempDisplay);
@@ -49,31 +57,38 @@ public class WeatherUI extends JFrame{
         boolean precipValue = theWeatherCntl.getPrecipitation();
         if (precipValue == true && tempValue == true){
             precipDisplay = "Snow";
+            precipImage = theWeatherCntl.getSnowImage();
         }
         else if (precipValue == true){
             precipDisplay = "Rain";
+            precipImage = theWeatherCntl.getRainImage();
         }
         else{
             precipDisplay = "None";
+            precipImage = theWeatherCntl.getSunImage();
         }
         precipArea.setEditable(false);
         precipArea.setText(precipDisplay);
         
+        tempImageLabel.setIcon(tempImage);
+        precipImageLabel.setIcon(precipImage);
         
         BorderLayout mainLayout = new BorderLayout();
         GridLayout contentLayout = new GridLayout(0, 2);
-        GridLayout tempLayout = new GridLayout(0, 2);
-        GridLayout precipLayout = new GridLayout(0, 2);
+        BorderLayout tempLayout = new BorderLayout();
+        BorderLayout precipLayout = new BorderLayout();
         
-        //tempPanel.setLayout(tempLayout);
-        //precipPanel.setLayout(precipLayout);
+        tempPanel.setLayout(tempLayout);
+        precipPanel.setLayout(precipLayout);
         contentPanel.setLayout(contentLayout);
         mainPanel.setLayout(mainLayout);
         
-        tempPanel.add(tempLabel);
-        tempPanel.add(tempArea);
-        precipPanel.add(precipLabel);
-        precipPanel.add(precipArea);
+        tempPanel.add(tempImageLabel, tempLayout.CENTER);
+        tempPanel.add(tempLabel, tempLayout.SOUTH);
+        tempPanel.add(tempArea, tempLayout.SOUTH);
+        precipPanel.add(precipImageLabel, precipLayout.CENTER);
+        precipPanel.add(precipLabel, precipLayout.SOUTH);
+        precipPanel.add(precipArea, precipLayout.SOUTH);
         contentPanel.add(tempPanel);
         contentPanel.add(precipPanel);
         mainPanel.add(contentPanel);

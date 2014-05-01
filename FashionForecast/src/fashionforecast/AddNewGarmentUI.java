@@ -144,7 +144,7 @@ public class AddNewGarmentUI extends JFrame{
     public class CancelButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
-            theWardrobeCntl.getWardrobeUI();
+            theWardrobeCntl.getWardrobeUI(true);
         }
     }
     
@@ -177,7 +177,7 @@ public class AddNewGarmentUI extends JFrame{
                 } 
 
                 theGarmentTableModel.addGarment(titleField.getText(), garmentImage, (String)sizeDropdown.getSelectedItem(), savedDirtyState, description.getText(), (String)typeDropdown.getSelectedItem(), precipitation, temperature);
-                theWardrobeCntl.getWardrobeUI();
+                theWardrobeCntl.getWardrobeUI(true);
                 setVisible(false);
                 }
             catch (IOException ex){

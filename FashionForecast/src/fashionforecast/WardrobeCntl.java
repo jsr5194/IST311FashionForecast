@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class WardrobeCntl {
     private MainMenuCntl theMainMenuCntl;
+    private WardrobeUI theWardrobeUI;
     private GarmentTableModel theGarmentTableModel;
     private OutfitTableModel theOutfitTableModel;
     private OutfitTableSimpleModel theOutfitTableSimpleModel;
@@ -15,16 +16,25 @@ public class WardrobeCntl {
     public ArrayList<Integer> coatGarmentIndices = new ArrayList<Integer>();
     public ArrayList<Integer> shoesGarmentIndices = new ArrayList<Integer>();
     
-    public WardrobeCntl(MainMenuCntl passedMainMenuCntl){
+    public WardrobeCntl(MainMenuCntl passedMainMenuCntl, boolean uiIsShown){
         theMainMenuCntl = passedMainMenuCntl;
         theGarmentTableModel = new GarmentTableModel(this);
         theOutfitTableModel = new OutfitTableModel(this, theGarmentTableModel);
         theOutfitTableSimpleModel = new OutfitTableSimpleModel(this, theGarmentTableModel);
-        WardrobeUI theWardrobeUI = new WardrobeUI(this);
+        getWardrobeUI(uiIsShown);
     }
     
-    public void getWardrobeUI(){
-        WardrobeUI theWardrobeUI = new WardrobeUI(this);
+    public void getWardrobeUI(boolean showUI){
+        theWardrobeUI = new WardrobeUI(this);
+        if (theWardrobeUI == null){
+            theWardrobeUI = new WardrobeUI(this);
+        }
+        if (showUI == false){
+            theWardrobeUI.setVisible(false);
+        }
+        else{
+            theWardrobeUI.setVisible(true);
+        }
     }
     
     public void getWardrobeGarmentDetailUI(int passedRow){

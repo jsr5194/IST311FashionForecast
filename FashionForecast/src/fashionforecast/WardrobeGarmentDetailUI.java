@@ -173,7 +173,7 @@ public class WardrobeGarmentDetailUI extends JFrame{
     public class CancelButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
-            theWardrobeCntl.getWardrobeUI();
+            theWardrobeCntl.getWardrobeUI(true);
         }
     }
     
@@ -184,7 +184,7 @@ public class WardrobeGarmentDetailUI extends JFrame{
                 if (currentGarmentIndex != 0){
                     setVisible(false);
                     theGarmentTableModel.removeValueAt(currentGarmentIndex);
-                    theWardrobeCntl.getWardrobeUI();
+                    theWardrobeCntl.getWardrobeUI(true);
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "You cannot delete this outfit.");
@@ -218,7 +218,7 @@ public class WardrobeGarmentDetailUI extends JFrame{
             }
             
             theGarmentTableModel.saveEditedGarment(currentGarmentIndex, titleField.getText(), garmentImage, garmentSizeField.getText(), savedDirtyState, description.getText(), typeField.getText(), precipitation, temperature);
-            theWardrobeCntl.getWardrobeUI();
+            theWardrobeCntl.getWardrobeUI(true);
         }
     }
     
