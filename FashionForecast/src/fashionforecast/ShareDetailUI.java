@@ -104,6 +104,8 @@ public class ShareDetailUI extends JFrame{
     public class SendButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             JOptionPane.showMessageDialog(null, "Message posted to "+platform);
+            setVisible(false);
+            theShareCntl.getShareUI();
         }
     }
     

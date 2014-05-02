@@ -43,6 +43,7 @@ public class RecommendationUI extends JFrame{
     JTextArea tempTextArea;
     JTextArea precipTextArea;
     JButton homeButton;
+    JButton saveButton;
     
     Garment[] recommendation;
     
@@ -216,6 +217,12 @@ public class RecommendationUI extends JFrame{
         public void actionPerformed(ActionEvent e){
             setVisible(false);
             theRecommendationCntl.getMainMenuCntl();
+        }
+    }
+    
+    public class SaveButtonListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            System.out.println("testing");
         }
     }
     
