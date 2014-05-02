@@ -132,4 +132,9 @@ public class RecommendationCntl {
         }
     }
     
+    public void saveRecommendedOutfit(String name, Garment passedShirt, Garment passedPants, Garment passedCoat, Garment passedShoes, String passedFormality){
+        int userIndex = theMainMenuCntl.getUserList().getUserIndex();
+        theMainMenuCntl.returnWardrobeCntl().getTheOutfitTableModel().addOutfit(name, passedShirt, passedPants, passedCoat, passedShoes, passedFormality);
+    }
+    
 }

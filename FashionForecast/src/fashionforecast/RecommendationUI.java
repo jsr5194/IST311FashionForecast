@@ -23,6 +23,7 @@ public class RecommendationUI extends JFrame{
     JPanel weatherPanel;
     JPanel recommendationPanel;
     JPanel garmentPanel;
+    JPanel buttonsPanel;
     
     JTextArea descriptionTextArea;
     JLabel zipLabel;
@@ -67,12 +68,14 @@ public class RecommendationUI extends JFrame{
         recommendationPanel = new JPanel();
         garmentPanel = new JPanel();
         weatherPanel = new JPanel();
+        buttonsPanel = new JPanel();
         
         BorderLayout theMainLayout = new BorderLayout();
         BorderLayout theBodyLayout = new BorderLayout();
         BorderLayout theRecommendationLayout = new BorderLayout();
         GridLayout theGarmentLayout = new GridLayout(0, 2);
         GridLayout theWeatherLayout = new GridLayout(0, 3);
+        GridLayout theButtonsLayout = new GridLayout(0, 2);
         
         zipLabel = new JLabel("Zip Code: ");
         zipField = new JTextField();
@@ -95,6 +98,9 @@ public class RecommendationUI extends JFrame{
         
         homeButton = new JButton("Home");
         homeButton.addActionListener(new HomeButtonListener());
+        saveButton = new JButton("Save");
+        saveButton.addActionListener(new SaveButtonListener());
+        saveButton.setEnabled(false);
         
         
         mainPanel.setLayout(theMainLayout);
@@ -122,8 +128,10 @@ public class RecommendationUI extends JFrame{
         garmentPanel.add(shoesImageLabel);
         recommendationPanel.add(weatherPanel, theRecommendationLayout.SOUTH);
         bodyPanel.add(recommendationPanel);
+        buttonsPanel.add(homeButton);
+        buttonsPanel.add(saveButton);
         mainPanel.add(bodyPanel, theMainLayout.CENTER);
-        mainPanel.add(homeButton, theMainLayout.SOUTH);
+        mainPanel.add(buttonsPanel, theMainLayout.SOUTH);
         this.add(mainPanel);
         setVisible(true);
     }
@@ -175,6 +183,7 @@ public class RecommendationUI extends JFrame{
                 }
                 precipTextArea.setEditable(false);
                 precipTextArea.setText("Precipitation: " + precipDisplay);
+                saveButton.setEnabled(true);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Invalid entry. Please enter a 5 digit Zip Code");
@@ -199,6 +208,7 @@ public class RecommendationUI extends JFrame{
         weatherLabel.setText("");
         tempTextArea.setText("");
         precipTextArea.setText("");
+        saveButton.setEnabled(false);
     }
     
     public class ZipSubmitButtonListener implements ActionListener{
@@ -222,7 +232,12 @@ public class RecommendationUI extends JFrame{
     
     public class SaveButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            System.out.println("testing");
+            String name = JOptionPane.showInputDialog(null, "Enter Outfit Name");
+            String formality = JOptionPane.showInputDialog(null, "Enter Outfit Formality");
+            theRecommendationCntl.saveRecommendedOutfit(name, shirt, pants, coat, shoes, formality);
+            JOptionPane.showMessageDialog(null, "Outfit Saved");
+            setVisible(false);
+            theRecommendationCntl.getMainMenuCntl();
         }
     }
     
